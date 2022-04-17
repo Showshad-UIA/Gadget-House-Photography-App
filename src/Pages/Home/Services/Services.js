@@ -1,17 +1,23 @@
-import React from "react";
-import background from "../../../../image/Background.png";
+import React, { useEffect, useState } from "react";
+import Service from "../Service/Service";
+import "./Services.css";
+
 const Services = () => {
-	const services = [
-		{
-			id: 1,
-			name: "trabel photography",
-			price: 100,
-			img: "https://i.ibb.co/DMtbXny/Background.png",
-		},
-	];
+	const [services, setServices] = useState([]);
+	useEffect(() => {
+		fetch("services.json")
+			.then((res) => res.json())
+			.then((data) => setServices(data));
+	}, []);
+
 	return (
 		<div>
-			<h1>Services:</h1>
+			<h1 className="title">Our Services</h1>
+			<div className="services-container">
+				{services.map((service) => (
+					<Service key={service.id} service={service}></Service>
+				))}
+			</div>
 		</div>
 	);
 };

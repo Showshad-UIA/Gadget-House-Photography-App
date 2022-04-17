@@ -26,7 +26,7 @@ const experts = [
 const VideoRecorders = () => {
 	return (
 		<div className="container">
-			<h2 className="text-primary text-center">Our Services</h2>
+			<h2 className="text-primary text-center mt-5 mb-5">Hot Deal</h2>
 			<div className="row">
 				{experts.map((videoRecorder) => (
 					<VideoRecorder

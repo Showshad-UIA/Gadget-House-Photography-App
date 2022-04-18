@@ -1,21 +1,31 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 const Login = () => {
 	const mailRef = useRef("");
 	const refPassword = useRef("");
 	const navigate = useNavigate();
 
+	const [signInWithEmailAndPassword, user, loading, error] =
+		useSignInWithEmailAndPassword(auth);
+
 	const handleButton = (e) => {
 		e.preventDefault();
 		const email = mailRef.current.value;
 		const password = refPassword.current.value;
+
+		signInWithEmailAndPassword(email, password);
 	};
 
 	const redirect = (e) => {
 		navigate("/signup");
 	};
+
+	if (user) {
+		navigate("/home");
+	}
 
 	return (
 		<div className="container w-50 mx-auto">
@@ -45,7 +55,7 @@ const Login = () => {
 				</Button>
 			</Form>
 			<p>
-				Are you new at Gadget House?{" "}
+				Are you new at Gadget House?
 				<Link
 					to="/signup"
 					className="text-danger text-decoration-none pe-auto "

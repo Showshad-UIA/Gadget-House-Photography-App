@@ -10,6 +10,8 @@ import Login from "./Pages/Login/Login/Login";
 import Blog from "./Pages/Blog/Blog";
 import About from "./Pages/About/About";
 import Signup from "./Pages/Signup/Signup";
+import Checkout from "./Pages/Checkout/Checkout";
+import RequairdAuth from "./Pages/Login/RequairdAuth/RequairdAuth";
 
 function App() {
 	return (
@@ -17,6 +19,7 @@ function App() {
 			<Header></Header>
 			<Routes>
 				<Route path="/" element={<Home></Home>}></Route>
+				<Route path="/home" element={<Home></Home>}></Route>
 				<Route
 					path="/service/:serviceId"
 					element={<AboutService></AboutService>}
@@ -25,6 +28,14 @@ function App() {
 				<Route path="/about" element={<About></About>}></Route>
 				<Route path="/login" element={<Login></Login>}></Route>
 				<Route path="/signup" element={<Signup></Signup>}></Route>
+				<Route
+					path="/checkout"
+					element={
+						<RequairdAuth>
+							<Checkout></Checkout>
+						</RequairdAuth>
+					}
+				></Route>
 
 				<Route path="*" element={<NotFound></NotFound>}></Route>
 			</Routes>

@@ -22,14 +22,14 @@ const Slider = () => {
 				<img className="d-block w-100" src={slider2} alt="Second slide" />
 
 				<Carousel.Caption>
-					<h3>Wedding Photoshoot</h3>
+					<h3>Wedding Photoshot</h3>
 				</Carousel.Caption>
 			</Carousel.Item>
 			<Carousel.Item>
 				<img className="d-block w-100" src={slider3} alt="Third slide" />
 
 				<Carousel.Caption>
-					<h3> Beach Photshoot</h3>
+					<h3> Beach Photoshot</h3>
 				</Carousel.Caption>
 			</Carousel.Item>
 		</Carousel>

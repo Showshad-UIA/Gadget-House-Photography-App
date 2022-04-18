@@ -10,16 +10,19 @@ const experts = [
 		id: 1,
 		name: "cristian",
 		img: videogrpher1,
+		Price: "RM50",
 	},
 	{
 		id: 2,
 		name: "Jhony sing",
 		img: videogrpher2,
+		price: "RM 65",
 	},
 	{
 		id: 3,
 		name: "albert",
 		img: videogrpher3,
+		price: "rm 60",
 	},
 ];
 

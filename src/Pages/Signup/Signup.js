@@ -17,7 +17,6 @@ const Signup = () => {
 	}
 	const handleSignup = (event) => {
 		event.preventDefault();
-		console.log(event.target.email.value);
 
 		const name = event.target.name.value;
 		const email = event.target.email.value;

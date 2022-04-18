@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { async } from "@firebase/util";
 const Login = () => {
 	const mailRef = useRef("");
 	const refPassword = useRef("");
@@ -26,10 +27,16 @@ const Login = () => {
 		navigate("/signup");
 	};
 
+	const [sendPasswordResetEmail] = useSignInWithEmailAndPassword(auth);
 	if (user) {
 		navigate(from, { replace: true });
 	}
 
+	const resetPassword = async () => {
+		const email = mailRef.current.value;
+		await sendPasswordResetEmail(email);
+		alert("sent email");
+	};
 	return (
 		<div className="container w-50 mx-auto">
 			<h1 className="text-primary mt-3 text-center">Login</h1>
@@ -49,10 +56,11 @@ const Login = () => {
 				<Form.Group className="mb-3" controlId="formBasicCheckbox">
 					<Form.Check type="checkbox" label="Check me out" />
 				</Form.Group>
-				<Button variant="primary" type="submit">
+				<Button variant="primary mx-auto d-block mb-2" type="submit">
 					Login
 				</Button>
 			</Form>
+
 			<p>
 				Are you new at Gadget House?
 				<Link
@@ -61,6 +69,16 @@ const Login = () => {
 					onClick={redirect}
 				>
 					Please Signup
+				</Link>
+			</p>
+			<p>
+				Forget Password?
+				<Link
+					to="/signup"
+					className="text-danger text-decoration-none pe-auto "
+					onClick={resetPassword}
+				>
+					Reset Password
 				</Link>
 			</p>
 			<SocialLogin></SocialLogin>
